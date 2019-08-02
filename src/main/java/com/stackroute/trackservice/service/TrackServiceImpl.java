@@ -1,5 +1,7 @@
 package com.stackroute.trackservice.service;
 
+import com.stackroute.trackservice.Exceptions.TrackAlreadyExistException;
+import com.stackroute.trackservice.Exceptions.TrackNotFoundException;
 import com.stackroute.trackservice.domain.Track;
 import com.stackroute.trackservice.repository.TrackRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,13 +21,21 @@ public class TrackServiceImpl implements TrackService {
 
     //
     @Override
-    public Track getTrackById(int id) {
-        return trackRepository.findById(id).get();
+    public Track getTrackById(int id) throws TrackAlreadyExistException {
+
+        if(trackRepository.existsById(id)){
+                throw new TrackAlreadyExistException("track is already added before");
+        }
+            return trackRepository.findById(id).get();
     }
 
     @Override
-    public Track saveTrack(Track track) {
-        return trackRepository.save(track);
+    public Track saveTrack(Track track) throws TrackNotFoundException {
+        if(trackRepository.existsById(track.getId())) {
+                throw new TrackNotFoundException("track is not present");
+        }
+            return trackRepository.save(track);
+
     }
 
     // method to delete track with particular id

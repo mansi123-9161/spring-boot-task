@@ -1,5 +1,7 @@
 package com.stackroute.trackservice.controller;
 
+import com.stackroute.trackservice.Exceptions.TrackAlreadyExistException;
+import com.stackroute.trackservice.Exceptions.TrackNotFoundException;
 import com.stackroute.trackservice.domain.Track;
 import com.stackroute.trackservice.service.TrackService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,19 +29,19 @@ public class TrackController {
         ResponseEntity responseEntity;
         try {
            Track retrievedTrack = trackService.getTrackById(id);
-            responseEntity = new ResponseEntity<Track>(retrievedTrack, HttpStatus.CREATED);
+            responseEntity = new ResponseEntity<Track>(retrievedTrack, HttpStatus.FOUND);
         } catch (Exception ex) {
-            responseEntity = new ResponseEntity<>(ex.getMessage(), HttpStatus.CONFLICT);
+            responseEntity = new ResponseEntity<>(ex.getMessage(), HttpStatus.NOT_FOUND);
         }
         return responseEntity;
     }
     @PostMapping("track")
-    public ResponseEntity<?> getTrackSave(@RequestBody Track track){
+    public ResponseEntity<?> saveTrack(@RequestBody Track track) throws TrackNotFoundException {
         ResponseEntity responseEntity;
         try {
             Track savedTrack = trackService.saveTrack(track);
             responseEntity = new ResponseEntity(savedTrack, HttpStatus.CREATED);
-        } catch (Exception ex) {
+        } catch (TrackAlreadyExistException ex) {
             responseEntity = new ResponseEntity(ex.getMessage(), HttpStatus.CONFLICT);
         }
         return responseEntity;
@@ -49,9 +51,9 @@ public class TrackController {
         ResponseEntity responseEntity;
         try {
             List<Track> listOfTracks= trackService.getAllTrack();
-            responseEntity = new ResponseEntity(listOfTracks, HttpStatus.CREATED);
+            responseEntity = new ResponseEntity(listOfTracks, HttpStatus.FOUND);
         } catch (Exception ex) {
-            responseEntity = new ResponseEntity(ex.getMessage(), HttpStatus.CONFLICT);
+            responseEntity = new ResponseEntity(ex.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
         return responseEntity;
     }
@@ -61,8 +63,8 @@ public class TrackController {
         ResponseEntity responseEntity;
         try {
             trackService.deleteTrackById(id);
-            responseEntity = new ResponseEntity("success", HttpStatus.CREATED);
-        } catch (Exception ex) {
+            responseEntity = new ResponseEntity("success", HttpStatus.NOT_FOUND);
+        } catch (TrackNotFoundException ex) {
             responseEntity = new ResponseEntity(ex.getMessage(), HttpStatus.CONFLICT);
         }
         return responseEntity;
