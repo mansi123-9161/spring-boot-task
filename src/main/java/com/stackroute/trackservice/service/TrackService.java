@@ -5,9 +5,11 @@ import com.stackroute.trackservice.domain.Track;
 import java.util.List;
 
 public interface TrackService {
-    public Track getTrackById(int id);
-    public Track getTrackSave(Track track);
-    public Track deleteTrackById(int id);
-    public Track updateTrack(int id,Track track);
-    public List<Track> getAllTrack();
+     Track getTrackById(int id);
+     Track saveTrack(Track track);
+     Track deleteTrackById(int id);
+     Track updateTrack(int id,Track track);
+     List<Track> getAllTrack();
+
+    Track getTrackByName(String name);
 }

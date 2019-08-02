@@ -9,31 +9,33 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class TrackServiceImpl implements TrackService{
+public class TrackServiceImpl implements TrackService {
     private TrackRepository trackRepository;
-   @Autowired
+
+    @Autowired
     public TrackServiceImpl(TrackRepository trackRepository) {
         this.trackRepository = trackRepository;
     }
- //
+
+    //
     @Override
     public Track getTrackById(int id) {
-      return trackRepository.findById(id).get();
+        return trackRepository.findById(id).get();
     }
 
     @Override
-    public Track getTrackSave(Track track) {
+    public Track saveTrack(Track track) {
         return trackRepository.save(track);
     }
-// method to delete track with particular id
+
+    // method to delete track with particular id
     @Override
     public Track deleteTrackById(int id) {
-     Optional<Track> value= trackRepository.findById(id);
+        Optional<Track> value = trackRepository.findById(id);
         if (value.isPresent()) {
             trackRepository.deleteById(id);
             return value.get();
-        }
-        else
+        } else
             return null;
     }
 
@@ -45,11 +47,16 @@ public class TrackServiceImpl implements TrackService{
         Track updateTrack = trackRepository.save(track);
         return updateTrack;
     }
-//method to find all tracks
+
+    //method to find all tracks
     @Override
     public List<Track> getAllTrack() {
         return trackRepository.findAll();
     }
 
+    @Override
+    public Track getTrackByName(String name) {
+        return trackRepository.findTrackByName(name);
+    }
 
 }
