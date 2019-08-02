@@ -10,7 +10,8 @@ import org.springframework.stereotype.Component;
 public class CommandLineListnerImpl implements CommandLineRunner {
     private TrackRepository trackRepository;
 @Autowired
-// it starts just after application context created
+// it just created after tomcat server starts
+
     public CommandLineListnerImpl(TrackRepository trackRepository) {
         this.trackRepository = trackRepository;
     }

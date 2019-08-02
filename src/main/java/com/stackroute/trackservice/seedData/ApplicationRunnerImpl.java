@@ -28,7 +28,7 @@ public class ApplicationRunnerImpl implements ApplicationListener, ApplicationRu
         Track track4=new Track(4,"song4","comment4");
         trackRepository.save(track4);
     }
-//
+    // it starts just after application context created
     @Override
     public void run(ApplicationArguments args) throws Exception {
         Track track1=new Track(1,"song1","comment1runner");
