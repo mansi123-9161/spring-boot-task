@@ -79,18 +79,18 @@ public class TrackController {
         return responseEntity;
     }
 //    //get track by name
-//    @GetMapping("tracks/{name}")
-//    public ResponseEntity<Track> getTrackByName(@PathVariable String name) {
-//        System.out.println("Name****" + name);
-//        ResponseEntity responseEntity;
-//        try {
-//           Track value= trackService.getTrackByName(name);
-//           responseEntity=new ResponseEntity<Track>(value,HttpStatus.OK);
-//        }
-//        catch (Exception ex){
-//            responseEntity =new ResponseEntity<>(ex.getMessage(),HttpStatus.CONFLICT);
-//        }
-//        return responseEntity;
-//    }
+    @GetMapping("tracks/{name}")
+    public ResponseEntity<Track> getTrackByName(@PathVariable String name) {
+        System.out.println("Name****" + name);
+        ResponseEntity responseEntity;
+        try {
+           Track data= trackService.getTrackByName(name);
+           responseEntity=new ResponseEntity<Track>(data,HttpStatus.OK);
+        }
+        catch (Exception ex){
+            responseEntity =new ResponseEntity<>(ex.getMessage(),HttpStatus.CONFLICT);
+        }
+        return responseEntity;
+    }
 
 }

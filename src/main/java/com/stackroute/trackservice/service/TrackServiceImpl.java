@@ -43,7 +43,7 @@ public class TrackServiceImpl implements TrackService {
     public Track updateTrack(int id, Track track) {
         //        delete the track
         trackRepository.deleteById(id);
-//        edit the track and save it
+          // edit the track and save it
         Track updateTrack = trackRepository.save(track);
         return updateTrack;
     }
@@ -53,7 +53,7 @@ public class TrackServiceImpl implements TrackService {
     public List<Track> getAllTrack() {
         return trackRepository.findAll();
     }
-
+     //method to get track by their name
     @Override
     public Track getTrackByName(String name) {
         return trackRepository.findTrackByName(name);
