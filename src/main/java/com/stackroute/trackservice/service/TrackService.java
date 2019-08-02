@@ -1,7 +1,7 @@
 package com.stackroute.trackservice.service;
 
-import com.stackroute.trackservice.Exceptions.TrackAlreadyExistException;
-import com.stackroute.trackservice.Exceptions.TrackNotFoundException;
+import com.stackroute.trackservice.exceptions.TrackAlreadyExistException;
+import com.stackroute.trackservice.exceptions.TrackNotFoundException;
 import com.stackroute.trackservice.domain.Track;
 
 import java.util.List;

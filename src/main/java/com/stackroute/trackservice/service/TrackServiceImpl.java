@@ -1,7 +1,7 @@
 package com.stackroute.trackservice.service;
 
-import com.stackroute.trackservice.Exceptions.TrackAlreadyExistException;
-import com.stackroute.trackservice.Exceptions.TrackNotFoundException;
+import com.stackroute.trackservice.exceptions.TrackAlreadyExistException;
+import com.stackroute.trackservice.exceptions.TrackNotFoundException;
 import com.stackroute.trackservice.domain.Track;
 import com.stackroute.trackservice.repository.TrackRepository;
 import org.springframework.beans.factory.annotation.Autowired;
