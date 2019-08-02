@@ -34,14 +34,10 @@ public class TrackController {
         return responseEntity;
     }
     @PostMapping("track")
-    public ResponseEntity<?> saveTrack(@RequestBody Track track) throws TrackNotFoundException {
+    public ResponseEntity<?> saveTrack(@RequestBody Track track) throws TrackNotFoundException, TrackAlreadyExistException {
         ResponseEntity responseEntity;
-        try {
             Track savedTrack = trackService.saveTrack(track);
             responseEntity = new ResponseEntity(savedTrack, HttpStatus.CREATED);
-        } catch (TrackAlreadyExistException ex) {
-            responseEntity = new ResponseEntity(ex.getMessage(), HttpStatus.CONFLICT);
-        }
         return responseEntity;
     }
     @GetMapping("tracks")
