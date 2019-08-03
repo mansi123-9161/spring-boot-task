@@ -5,12 +5,18 @@ import com.stackroute.trackservice.exceptions.TrackNotFoundException;
 import com.stackroute.trackservice.domain.Track;
 import com.stackroute.trackservice.repository.TrackRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
+//Primary annotation is used to give higher preference to a bean when there are multiple beans of the same type.
+//@Primary
+//In Spring, @Qualifier means, which bean is qualify to autowired on a field.
+@Qualifier("main")
 public class TrackServiceImpl implements TrackService {
     private TrackRepository trackRepository;
 
