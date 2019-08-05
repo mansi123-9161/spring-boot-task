@@ -12,12 +12,12 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
-@Profile("prod")
+//@Profile("prod")
 @Service
 //Primary annotation is used to give higher preference to a bean when there are multiple beans of the same type.
 //@Primary
 //In Spring, @Qualifier means, which bean is qualify to autowired on a field.
-@Qualifier("main")
+//@Qualifier("main")
 public class TrackServiceImpl implements TrackService {
     private TrackRepository trackRepository;
 
@@ -71,9 +71,9 @@ public class TrackServiceImpl implements TrackService {
         return trackRepository.findAll();
     }
      //method to get track by their name
-    @Override
+   /* @Override
     public Track getTrackByName(String name) {
         return trackRepository.findTrackByName(name);
-    }
+    }*/
 
 }

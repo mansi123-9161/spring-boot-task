@@ -18,5 +18,5 @@ public interface TrackService {
      //    to get all the tracks
      List<Track> getAllTrack();
 
-    Track getTrackByName(String name);
+//    Track getTrackByName(String name);
 }

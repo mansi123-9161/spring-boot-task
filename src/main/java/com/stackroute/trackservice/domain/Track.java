@@ -1,16 +1,22 @@
 package com.stackroute.trackservice.domain;
 
+import com.mongodb.client.model.Collation;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+//import org.hibernate.mapping.Collection;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+//import javax.persistence.Entity;
+//import javax.persistence.Id;
+//import javax.persistence.Id;
 import java.lang.annotation.Documented;
 
 //@Entity annotation defines that a class can be mapped to a table.
 //@Entity
+@Document(collection = "track")
 //@Data is like having implicit @Getter,
 // @Setter, @ToString, @EqualsAndHashCode and @RequiredArgsConstructor annotations on the class
 @Data

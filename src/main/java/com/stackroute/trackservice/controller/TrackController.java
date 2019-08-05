@@ -39,6 +39,7 @@ public class TrackController {
     @PostMapping("track")
     public ResponseEntity<?> saveTrack(@RequestBody Track track) throws TrackNotFoundException, TrackAlreadyExistException {
         ResponseEntity responseEntity;
+        System.out.println("***" + track);
             Track savedTrack = trackService.saveTrack(track);
             responseEntity = new ResponseEntity(savedTrack, HttpStatus.CREATED);
         return responseEntity;
@@ -78,7 +79,7 @@ public class TrackController {
         return responseEntity;
     }
 //    //get track by name
-    @GetMapping("tracks/{name}")
+/*    @GetMapping("tracks/{name}")
     public ResponseEntity<Track> getTrackByName(@PathVariable String name) {
         System.out.println("Name****" + name);
         ResponseEntity responseEntity;
@@ -90,6 +91,6 @@ public class TrackController {
             responseEntity =new ResponseEntity<>(ex.getMessage(),HttpStatus.CONFLICT);
         }
         return responseEntity;
-    }
+    }*/
 
 }
