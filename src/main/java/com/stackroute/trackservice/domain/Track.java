@@ -7,8 +7,10 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import java.lang.annotation.Documented;
+
 //@Entity annotation defines that a class can be mapped to a table.
-@Entity
+//@Entity
 //@Data is like having implicit @Getter,
 // @Setter, @ToString, @EqualsAndHashCode and @RequiredArgsConstructor annotations on the class
 @Data
