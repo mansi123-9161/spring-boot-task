@@ -18,7 +18,9 @@ public class TrackController {
     private TrackService trackService;
 
     @Autowired
-    public TrackController(@Qualifier("main") TrackService trackService) {
+    public TrackController( TrackService trackService)
+  //  public TrackController(@Qualifier("main") TrackService trackService)
+    {
         this.trackService = trackService;
     }
 
