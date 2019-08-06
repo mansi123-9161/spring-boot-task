@@ -15,4 +15,9 @@ public class GlobalException extends ResponseEntityExceptionHandler{
     public ResponseEntity<String> exceptionHandler(TrackAlreadyExistException e){
         return new ResponseEntity<>("error occured"+e.getMessage(), HttpStatus.CONFLICT);
     }
+    @ExceptionHandler(value=TrackNotFoundException.class)
+    public ResponseEntity<String> exceptionHandler1(TrackNotFoundException e){
+        return new ResponseEntity<>("error occured"+e.getMessage(), HttpStatus.CONFLICT);
+    }
+
 }

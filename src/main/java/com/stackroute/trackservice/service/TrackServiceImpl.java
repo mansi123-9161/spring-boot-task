@@ -38,7 +38,7 @@ public class TrackServiceImpl implements TrackService {
 
     @Override
     public Track saveTrack(Track track) throws TrackNotFoundException {
-        if(trackRepository.existsById(track.getId())) {
+        if(trackRepository.existsById(track.get_id())) {
                 throw new TrackNotFoundException("track is not present");
         }
             return trackRepository.save(track);
@@ -70,10 +70,9 @@ public class TrackServiceImpl implements TrackService {
     public List<Track> getAllTrack() {
         return trackRepository.findAll();
     }
-     //method to get track by their name
-   /* @Override
+     //method to get track by their name* @Override
     public Track getTrackByName(String name) {
-        return trackRepository.findTrackByName(name);
-    }*/
+        return trackRepository.findByName(name);
+    }
 
 }
