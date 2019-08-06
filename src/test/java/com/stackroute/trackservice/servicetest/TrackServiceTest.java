@@ -27,7 +27,7 @@ public class TrackServiceTest {
 
     //Inject the mocks as dependencies into UserServiceImpl
     @InjectMocks
-    TrackServiceImpl trackService;
+     private   TrackServiceImpl trackService;
     List<Track> list= null;
 
 
@@ -43,14 +43,48 @@ public class TrackServiceTest {
         list.add(track);
     }
     @Test
-    public void saveUserTestSuccess() throws TrackAlreadyExistException {
-//
-//        when(trackRepository.save((Track) any())).thenReturn(track);
-//        Track savedUser = trackService.saveTrack(track);
-//        Assert.assertEquals(track,savedUser);
+    public void saveTrackSuccess() throws TrackAlreadyExistException {
+
+        when(trackRepository.save((Track) any())).thenReturn(track);
+        Track saveTrack = trackRepository.save(track);
+        Assert.assertEquals(track, saveTrack);
 
         //verify here verifies that userRepository save method is only called once
-        verify(trackRepository,times(1)).save(track);
+        verify(trackRepository, times(1)).save(track);
+
+    }
+//    @Test
+//    public void deleteTrackSuccess() throws TrackNotFoundException{
+//
+//        when(trackRepository.Track saveTrack = trackRepository.save(track);
+//        Assert.assertEquals(track, saveTrack);
+//
+//        //verify here verifies that userRepository save method is only called once
+//        verify(trackRepository, times(1)).save(track);
+//
+//    }
+
+    @Test
+    public void getAllTrack() {
+
+        trackRepository.save(track);
+        //stubbing the mock to return specific data
+        when(trackRepository.findAll()).thenReturn(list);
+        List<Track> tracks = trackRepository.findAll();
+        Assert.assertEquals(list, tracks);
+    }
+
+    @Test(expected = TrackAlreadyExistException.class)
+    public void saveTrackTestExistsAlready() throws TrackAlreadyExistException{
+//        when(trackRepository.save(track)(any())).thenReturn(null);
+        when(trackRepository.save((Track) any())).thenReturn(null);
+        Track saveTrack = trackService.saveTrack(track);
+        System.out.println("savedUser " + saveTrack);
+        Assert.assertNotSame(track,saveTrack);
+
+       /*doThrow(new UserAlreadyExistException()).when(userRepository).findById(eq(101));
+       userService.saveUser(user);*/
+
 
     }
 }

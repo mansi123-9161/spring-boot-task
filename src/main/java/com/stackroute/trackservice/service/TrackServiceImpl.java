@@ -37,12 +37,18 @@ public class TrackServiceImpl implements TrackService {
     }
 
     @Override
-    public Track saveTrack(Track track) throws TrackNotFoundException {
+    public Track saveTrack(Track track) throws TrackAlreadyExistException {
+        Track track1=null;
         if(trackRepository.existsById(track.get_id())) {
-                throw new TrackNotFoundException("track is not present");
+                throw new TrackAlreadyExistException("track is not present");
         }
-            return trackRepository.save(track);
-
+        else
+            track1=trackRepository.save(track);
+        if(track1==null)
+        {
+            throw new TrackAlreadyExistException("null");
+        }
+        return track1;
     }
 
     // method to delete track with particular id

@@ -26,7 +26,7 @@ public class TrackServiceDummyImpl implements TrackService{
     }
 
     @Override
-    public Track saveTrack(Track track) throws TrackAlreadyExistException, TrackNotFoundException {
+    public Track saveTrack(Track track) throws TrackAlreadyExistException{
         return null;
     }
 

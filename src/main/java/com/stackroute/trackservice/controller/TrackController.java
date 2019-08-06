@@ -26,7 +26,7 @@ public class TrackController {
 
     //get track bt id method
     @GetMapping("track/{id}")
-    public ResponseEntity<?> getTrackById(@PathVariable int id){
+    public ResponseEntity<?> getTrackById(@PathVariable int id) throws TrackNotFoundException{
         ResponseEntity responseEntity;
         try {
            Track retrievedTrack = trackService.getTrackById(id);
@@ -80,17 +80,23 @@ public class TrackController {
     }
 //    //get track by name
   @GetMapping("tracks/{name}")
-    public ResponseEntity<Track> getTrackByName(@PathVariable String name) {
-        System.out.println("Name****" + name);
-        ResponseEntity responseEntity;
-        try {
-           Track data= trackService.getTrackByName(name);
-           responseEntity=new ResponseEntity<Track>(data,HttpStatus.OK);
-        }
-        catch (Exception ex){
-            responseEntity =new ResponseEntity<>(ex.getMessage(),HttpStatus.CONFLICT);
-        }
-        return responseEntity;
-    }
+    public ResponseEntity<Track> getTrackByName(@PathVariable String name) throws TrackNotFoundException {
+//        System.out.println("Name****" + name);
+//        ResponseEntity responseEntity;
+//        try {
+//           Track data= trackService.getTrackByName(name);
+//           responseEntity=new ResponseEntity<Track>(data,HttpStatus.OK);
+//        }
+//        catch (Exception ex){
+//            responseEntity =new ResponseEntity<>(ex.getMessage(),HttpStatus.CONFLICT);
+//        }
+//        return responseEntity;
+//    }
+          ResponseEntity responseEntity;
+          Track data = trackService.getTrackByName(name);
+          responseEntity = new ResponseEntity<Track>(data, HttpStatus.OK);
+          return responseEntity;
+      }
+  }
 
-}
+
