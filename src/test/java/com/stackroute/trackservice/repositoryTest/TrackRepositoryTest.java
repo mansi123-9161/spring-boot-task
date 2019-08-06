@@ -36,7 +36,7 @@ public class TrackRepositoryTest {
         trackRepository.deleteAll();
     }
    @Test
-    public void testSaveUser(){
+    public void testSaveTrack(){
         Track track=new Track(2,"song2","comment2");
         trackRepository.save(track);
         List<Track> list=trackRepository.findAll();
@@ -46,7 +46,7 @@ public class TrackRepositoryTest {
 
     }
     @Test
-    public void testSaveUserFailure(){
+    public void testSaveTrackFailure(){
         Track testUser = new Track(1,"SONG2","COMMENTS");
         trackRepository.save(track);
         Track fetchUser = trackRepository.findById(track.get_id()).get();
@@ -72,7 +72,7 @@ public class TrackRepositoryTest {
         Assert.assertEquals(track,testId);
     }
     @Test
-    public void testGetByNotNameTrack(){
+    public void testGetByNameTrackFailure(){
         trackRepository.save(track);
         Track testId=trackRepository.findByName(track.getName());
         Assert.assertNotSame(track,testId);
