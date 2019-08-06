@@ -87,10 +87,10 @@ public class TrackControllerTest {
     }
     @Test
     public void getTrackById() throws Exception {
-        when(trackService.getTrackById(track.get_id())).thenReturn(track);
-        mockMvc.perform(MockMvcRequestBuilders.get("/api/v1/tracks/name")
+        when(trackService.getTrackById(10)).thenReturn(track);
+        mockMvc.perform(MockMvcRequestBuilders.get("/api/v1/track/10")
                 .contentType(MediaType.APPLICATION_JSON).content(asJsonString(track)))
-                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.status().isFound())
                 .andDo(MockMvcResultHandlers.print());
     }
     @Test
