@@ -67,7 +67,7 @@ public class TrackController {
         }
         return responseEntity;
     }
-    @PostMapping("track/{id}")
+    @PutMapping("track/{id}")
     public ResponseEntity<?> updateTrack(@PathVariable int id,@RequestBody Track track){
         ResponseEntity responseEntity;
         try {
