@@ -7,11 +7,7 @@ import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-//@Entity annotation defines that a class can be mapped to a table.
-//@Entity
 @Document(collection = "track")
-//@Data is like having implicit @Getter,
-// @Setter, @ToString, @EqualsAndHashCode and @RequiredArgsConstructor annotations on the class
 @Data
 //to generate no argument constructor
 @NoArgsConstructor
